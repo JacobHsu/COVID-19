@@ -25,6 +25,10 @@ yarn run build
 yarn run lint
 ```
 
+## Notes
+
+[stylus-lang](http://stylus-lang.com/try.html)
+
 ## References
 
 border-1px/[2019-nCov](https://github.com/border-1px/2019-nCov)  
