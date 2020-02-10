@@ -1,9 +1,11 @@
 <template>
   <div class="home">
-    <div class="statement-title">全国疫情状况</div>
-    <div class="update-time">截止 {{updateTime}}</div>
-    <div class="statement" @click="handleModal"><span>数据说明</span></div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="data-statement">
+      <div class="statement-title">全国疫情状况</div>
+      <div class="update-time">截止 {{updateTime}}</div>
+      <div class="statement" @click="handleModal"><span>数据说明</span></div>
+    </div>
+    <e-summary :total="total" :today="today"></e-summary>
   </div>
 </template>
 
@@ -11,16 +13,19 @@
 // @ is an alias to /src
 import buildMapData from '../data/map'
 import EAlert from '../components/Alert'
-import HelloWorld from '@/components/HelloWorld.vue'
+import ESummary from '../components/Summary.vue'
+
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    ESummary
   },
   data () {
     return {
-      updateTime: ''
+      updateTime: '',
+      total: null,
+      today: {}
     }
   },
   methods: {
@@ -46,11 +51,15 @@ export default {
   created () {
 
     const {
-      updateTime
+      updateTime,
+      today,
+      total
     } = buildMapData()
 
     this.updateTime = updateTime
-
+    this.today = today
+    this.total = total
+    
   }
 }
 </script>

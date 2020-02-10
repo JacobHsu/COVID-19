@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "yarn data & yarn serve",
     "data": "node ./build-data.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
