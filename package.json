@@ -12,7 +12,9 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^2.6.5",
+    "echarts": "^4.6.0",
     "pinyin": "^2.9.0",
+    "resize-detector": "^0.2.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "vue": "^2.6.10",

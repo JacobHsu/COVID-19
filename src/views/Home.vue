@@ -6,6 +6,16 @@
       <div class="statement" @click="handleModal"><span>数据说明</span></div>
     </div>
     <e-summary :total="total" :today="today"></e-summary>
+
+    <figure>
+      <e-charts
+        ref="map"
+        :options="map"
+        :init-options="initOptions"
+        autoresize
+      ></e-charts>
+    </figure>
+
   </div>
 </template>
 
@@ -14,18 +24,25 @@
 import buildMapData from '../data/map'
 import EAlert from '../components/Alert'
 import ESummary from '../components/Summary.vue'
+import ECharts from '../components/ECharts.vue'
 
 
 export default {
   name: 'home',
   components: {
-    ESummary
+    ESummary,
+    ECharts
   },
   data () {
     return {
       updateTime: '',
       total: null,
-      today: {}
+      today: {},
+      map: {},
+      provinceName: '',
+      initOptions: {
+        renderer: 'canvas'
+      }
     }
   },
   methods: {
@@ -53,13 +70,14 @@ export default {
     const {
       updateTime,
       today,
-      total
-    } = buildMapData()
+      total,
+      map,
+    } = buildMapData(this.provinceName)
 
     this.updateTime = updateTime
     this.today = today
     this.total = total
-    
+    this.map = map
   }
 }
 </script>

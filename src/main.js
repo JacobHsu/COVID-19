@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import 'echarts/lib/chart/map'
+import 'echarts/map/js/world'
 import './styles/init.styl'
 
 Vue.config.productionTip = false
