@@ -1,4 +1,5 @@
 import ECharts from '../components/ECharts.vue'
+import buildLineConfig from './config_line'
 import buildMapConfig from './config_map'
 import chinaMap from '../data/china.json'
 import area from './area.json'
@@ -9,6 +10,7 @@ export default function buildMapData (province) {
     today: null,
     total: null,
     map: null,
+    chinaDayList: null
   }
   
   const provinces = area.areaTree[0].children
@@ -23,8 +25,20 @@ export default function buildMapData (province) {
     })
   })
 
+  const xAxis = []
+  const dataConfirm = []
+  const dataSuspect = []
+  const dataDead = []
+  area.chinaDayList.forEach(day => {
+    xAxis.push(day.date)
+    dataConfirm.push(day.confirm)
+    dataSuspect.push(day.suspect)
+    dataDead.push(day.dead)
+  })
+
   mapData.total = area.chinaTotal
   mapData.today = area.chinaAdd
   mapData.map = buildMapConfig(province, result)
+  mapData.chinaDayList = buildLineConfig(xAxis, dataConfirm, dataSuspect, dataDead)
   return mapData
 }

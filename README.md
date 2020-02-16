@@ -32,3 +32,4 @@ yarn run lint
 ## References
 
 border-1px/[2019-nCov](https://github.com/border-1px/2019-nCov)  
+[echarts](https://echarts.apache.org/zh/index.html)  

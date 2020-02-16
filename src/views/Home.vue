@@ -16,6 +16,15 @@
       ></e-charts>
     </figure>
 
+    <figure>
+      <e-charts
+        ref="line"
+        :options="chinaDayList"
+        :init-options="initOptions"
+        autoresize
+      ></e-charts>
+    </figure>
+
   </div>
 </template>
 
@@ -39,6 +48,7 @@ export default {
       total: null,
       today: {},
       map: {},
+      chinaDayList: null,
       provinceName: '',
       initOptions: {
         renderer: 'canvas'
@@ -72,8 +82,10 @@ export default {
       today,
       total,
       map,
+      chinaDayList,
     } = buildMapData(this.provinceName)
 
+    this.chinaDayList = chinaDayList
     this.updateTime = updateTime
     this.today = today
     this.total = total
