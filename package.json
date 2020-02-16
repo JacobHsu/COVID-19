@@ -1,18 +1,21 @@
 {
-  "name": "2019-ncov",
+  "name": "COVID-19",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jacobhsu.github.io/COVID-19/",
   "scripts": {
     "start": "yarn data & yarn serve",
     "data": "node ./build-data.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "deploy": "yarn build && gh-pages -d dist",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^2.6.5",
     "echarts": "^4.6.0",
+    "gh-pages": "^2.2.0",
     "lodash": "^4.17.15",
     "pinyin": "^2.9.0",
     "resize-detector": "^0.2.0",

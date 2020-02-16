@@ -29,6 +29,27 @@ yarn run lint
 
 [stylus-lang](http://stylus-lang.com/try.html)
 
+## deploy
+
+`yarn add gh-pages`
+
+package.json
+
+```js
+"homepage": "https://jacobhsu.github.io/2019-nCov/",
+  "scripts": {
+    "deploy": "yarn build && gh-pages -d dist"
+  },
+```
+
+vue.config.js
+
+```js
+module.exports = {
+    publicPath: '2019-nCov'
+}
+```
+
 ## References
 
 border-1px/[2019-nCov](https://github.com/border-1px/2019-nCov)  
