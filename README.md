@@ -54,3 +54,4 @@ module.exports = {
 
 border-1px/[2019-nCov](https://github.com/border-1px/2019-nCov)  
 [echarts](https://echarts.apache.org/zh/index.html)  
+[vue-echarts](https://github.com/ecomfe/vue-echarts)/src/components/[ECharts.vue](https://github.com/ecomfe/vue-echarts/blob/master/src/components/ECharts.vue)
