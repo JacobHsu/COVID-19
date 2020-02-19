@@ -10,6 +10,7 @@ export default function buildMapData (province) {
     today: null,
     total: null,
     map: null,
+    table: null,
     chinaDayList: null
   }
   
@@ -38,6 +39,7 @@ export default function buildMapData (province) {
 
   mapData.total = area.chinaTotal
   mapData.today = area.chinaAdd
+  mapData.table = area.areaTree[0].children
   mapData.map = buildMapConfig(province, result)
   mapData.chinaDayList = buildLineConfig(xAxis, dataConfirm, dataSuspect, dataDead)
   return mapData

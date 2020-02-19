@@ -25,6 +25,9 @@
       ></e-charts>
     </figure>
 
+    <div class="section-title">国内病例</div>
+    <e-table :data="table"></e-table>
+
   </div>
 </template>
 
@@ -34,13 +37,15 @@ import buildMapData from '../data/map'
 import EAlert from '../components/Alert'
 import ESummary from '../components/Summary.vue'
 import ECharts from '../components/ECharts.vue'
+import ETable from '../components/Table.vue'
 
 
 export default {
   name: 'home',
   components: {
     ESummary,
-    ECharts
+    ECharts,
+    ETable
   },
   data () {
     return {
@@ -48,6 +53,7 @@ export default {
       total: null,
       today: {},
       map: {},
+      table: [],
       chinaDayList: null,
       provinceName: '',
       initOptions: {
@@ -82,6 +88,7 @@ export default {
       today,
       total,
       map,
+      table,
       chinaDayList,
     } = buildMapData(this.provinceName)
 
@@ -89,6 +96,7 @@ export default {
     this.updateTime = updateTime
     this.today = today
     this.total = total
+    this.table = table
     this.map = map
   }
 }
