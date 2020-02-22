@@ -1,8 +1,10 @@
 import ECharts from '../components/ECharts.vue'
 import buildLineConfig from './config_line'
 import buildMapConfig from './config_map'
+import buildDeadConfig from './config_dead'
 import chinaMap from '../data/china.json'
 import area from './area.json'
+import { drop } from 'ramda';
 
 export default function buildMapData (province) {
   const mapData = {
@@ -30,11 +32,14 @@ export default function buildMapData (province) {
   const dataConfirm = []
   const dataSuspect = []
   const dataDead = []
+  const mortalityRate = []
   area.chinaDayList.forEach(day => {
     xAxis.push(day.date)
     dataConfirm.push(day.confirm)
     dataSuspect.push(day.suspect)
     dataDead.push(day.dead)
+    let dayMortalityRate = Number(day.dead / day.confirm *100).toFixed(2);
+    mortalityRate.push(dayMortalityRate)
   })
 
   mapData.total = area.chinaTotal
@@ -42,5 +47,13 @@ export default function buildMapData (province) {
   mapData.table = area.areaTree[0].children
   mapData.map = buildMapConfig(province, result)
   mapData.chinaDayList = buildLineConfig(xAxis, dataConfirm, dataSuspect, dataDead)
+  mapData.tableDayList = area.chinaDayList
+
+  const dayMortalityRate = drop(15, mortalityRate)
+  const dayxAxis = drop(15, xAxis)
+  mapData.chinaDayDeadList = buildDeadConfig(dayxAxis, dayMortalityRate)
   return mapData
 }
+
+
+

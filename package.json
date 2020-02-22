@@ -18,6 +18,7 @@
     "gh-pages": "^2.2.0",
     "lodash": "^4.17.15",
     "pinyin": "^2.9.0",
+    "ramda": "^0.27.0",
     "resize-detector": "^0.2.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",

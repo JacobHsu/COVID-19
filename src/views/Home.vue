@@ -28,6 +28,17 @@
     <div class="section-title">国内病例</div>
     <e-table :data="table"></e-table>
 
+    <figure>
+      <e-charts
+        ref="line"
+        :options="chinaDayDeadList"
+        :init-options="initOptions"
+        autoresize
+      ></e-charts>
+    </figure>
+
+    <d-table :data="table" :list="dayList"></d-table>
+
   </div>
 </template>
 
@@ -38,14 +49,15 @@ import EAlert from '../components/Alert'
 import ESummary from '../components/Summary.vue'
 import ECharts from '../components/ECharts.vue'
 import ETable from '../components/Table.vue'
-
+import DTable from '../components/DTable.vue'
 
 export default {
   name: 'home',
   components: {
     ESummary,
     ECharts,
-    ETable
+    ETable,
+    DTable
   },
   data () {
     return {
@@ -90,14 +102,18 @@ export default {
       map,
       table,
       chinaDayList,
+      tableDayList,
+      chinaDayDeadList
     } = buildMapData(this.provinceName)
 
     this.chinaDayList = chinaDayList
+    this.chinaDayDeadList = chinaDayDeadList
     this.updateTime = updateTime
     this.today = today
     this.total = total
     this.table = table
     this.map = map
+    this.dayList = tableDayList
   }
 }
 </script>
